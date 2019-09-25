@@ -107,9 +107,9 @@ var onPopupEscPress = function (evt) {
   }
 };
 
-setupUserName.onfocus = function (evt) {
+setupUserName.addEventListener('keydown', function (evt) {
   evt.stopPropagation();
-};
+});
 
 var openPopup = function () {
   setup.classList.remove('hidden');
