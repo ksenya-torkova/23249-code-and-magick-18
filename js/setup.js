@@ -102,10 +102,13 @@ var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
 
 var onPopupEscPress = function (evt) {
-  evt.stopPropagation();
   if (evt.keyCode === ESC_KEYCODE) {
     closePopup();
   }
+};
+
+setupUserName.onfocus = function (evt) {
+  evt.stopPropagation();
 };
 
 var openPopup = function () {
