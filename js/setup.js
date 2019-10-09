@@ -1,6 +1,8 @@
 'use strict';
 
 (function () {
+  var SETUP_DEFAULT_X = '80px';
+  var SETUP_DEFAULT_Y = '50%';
   var setup = document.querySelector('.setup');
   var setupSimilar = setup.querySelector('.setup-similar');
   setupSimilar.classList.remove('hidden');
@@ -21,6 +23,8 @@
 
   var closePopup = function () {
     setup.classList.add('hidden');
+    setup.style.top = SETUP_DEFAULT_X;
+    setup.style.left = SETUP_DEFAULT_Y;
     document.removeEventListener('keydown', onPopupEscPress);
   };
 

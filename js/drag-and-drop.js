@@ -34,11 +34,6 @@
     var onMouseUp = function (upEvt) {
       upEvt.preventDefault();
 
-      startCoordinates = {
-        x: evt.clientX,
-        y: evt.clientY
-      };
-
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
 
