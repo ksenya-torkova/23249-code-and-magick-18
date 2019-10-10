@@ -41,10 +41,22 @@
     'green'
   ];
 
+  var createHero = function () {
+    var hero = {
+      names:
+        Math.random() >= 0.5 ?
+          NAMES[window.util.getRandomInteger(0, NAMES.length - 1)] + ' ' + SURNAMES[window.util.getRandomInteger(0, SURNAMES.length - 1)] :
+          SURNAMES[window.util.getRandomInteger(0, NAMES.length - 1)] + ' ' + NAMES[window.util.getRandomInteger(0, SURNAMES.length - 1)],
+      coatColor: COAT_COLORS[window.util.getRandomInteger(0, COAT_COLORS.length - 1)],
+      eyesColor: EYES_COLORS[window.util.getRandomInteger(0, EYES_COLORS.length - 1)]
+    };
+
+    return hero;
+  };
+
   window.data = {
-    NAMES: NAMES,
-    SURNAMES: SURNAMES,
     COAT_COLORS: COAT_COLORS,
-    EYES_COLORS: EYES_COLORS
+    EYES_COLORS: EYES_COLORS,
+    createHero: createHero
   };
 })();
