@@ -15,12 +15,14 @@
     fragment.appendChild(heroTemplate);
   };
 
-  window.backend.load('get', window.backend.GET_DATA_URL, function (data) {
+  var onSuccessWizardsLoad = function (data) {
     for (var i = 0; i < HEROES_AMOUNT; i++) {
       getTemplateOfHero(data[i]);
     }
 
     var setupSimilarList = document.querySelector('.setup-similar-list');
     setupSimilarList.appendChild(fragment);
-  });
+  };
+
+  window.backend.load('get', window.backend.GET_DATA_URL, onSuccessWizardsLoad, window.backend.onErrorLoad);
 })();
