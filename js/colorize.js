@@ -1,6 +1,24 @@
 'use strict';
 
 (function () {
+  var COAT_COLORS = [
+    'rgb(101, 137, 164)',
+    'rgb(241, 43, 107)',
+    'rgb(146, 100, 161)',
+    'rgb(56, 159, 117)',
+    'rgb(56, 159, 117)',
+    'rgb(215, 210, 55)',
+    'rgb(0, 0, 0)'
+  ];
+
+  var EYES_COLORS = [
+    'black',
+    'red',
+    'blue',
+    'yellow',
+    'green'
+  ];
+
   var FIREBALL_COLORS = [
     '#ee4830',
     '#30a8ee',
@@ -44,12 +62,12 @@
   var setupFireballInput = window.setup.querySelector('input[name="fireball-color"]');
 
   setupWizardCoat.addEventListener('click', function () {
-    changeSvgColor(setupWizardCoat, window.data.COAT_COLORS);
+    changeSvgColor(setupWizardCoat, COAT_COLORS);
     setInputValue(setupWizardCoatInput, setupWizardCoat.style.fill);
   });
 
   setupWizardEyes.addEventListener('click', function () {
-    changeSvgColor(setupWizardEyes, window.data.EYES_COLORS);
+    changeSvgColor(setupWizardEyes, EYES_COLORS);
     setInputValue(setupWizardEyesInput, setupWizardEyes.style.fill);
   });
 

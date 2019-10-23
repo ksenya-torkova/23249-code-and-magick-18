@@ -9,20 +9,20 @@
 
   var getTemplateOfHero = function (heroItem) {
     var heroTemplate = similarHeroItem.cloneNode(true);
-    heroTemplate.querySelector('.setup-similar-label').textContent = heroItem.names;
-    heroTemplate.querySelector('.wizard-coat').style.fill = heroItem.coatColor;
-    heroTemplate.querySelector('.wizard-eyes').style.fill = heroItem.eyesColor;
+    heroTemplate.querySelector('.setup-similar-label').textContent = heroItem.name;
+    heroTemplate.querySelector('.wizard-coat').style.fill = heroItem.colorCoat;
+    heroTemplate.querySelector('.wizard-eyes').style.fill = heroItem.colorEyes;
     fragment.appendChild(heroTemplate);
   };
 
-  var addHeroesToMarkup = function () {
+  var onSuccessWizardsLoad = function (data) {
     for (var i = 0; i < HEROES_AMOUNT; i++) {
-      getTemplateOfHero(window.data.createHero());
+      getTemplateOfHero(data[i]);
     }
 
     var setupSimilarList = document.querySelector('.setup-similar-list');
     setupSimilarList.appendChild(fragment);
   };
 
-  addHeroesToMarkup();
+  window.backend.load('get', window.backend.GET_DATA_URL, onSuccessWizardsLoad, window.backend.onErrorLoad);
 })();
