@@ -6,6 +6,7 @@
   var similarHeroTemplate = document.querySelector('#similar-wizard-template').content;
   var similarHeroItem = similarHeroTemplate.querySelector('.setup-similar-item');
   var fragment = document.createDocumentFragment();
+  var wizards = [];
 
   var getTemplateOfHero = function (heroItem) {
     var heroTemplate = similarHeroItem.cloneNode(true);
@@ -15,13 +16,22 @@
     fragment.appendChild(heroTemplate);
   };
 
-  var onSuccessWizardsLoad = function (data) {
+  var renderWizards = function (wizardsData) {
     for (var i = 0; i < HEROES_AMOUNT; i++) {
-      getTemplateOfHero(data[i]);
+      getTemplateOfHero(wizardsData[i]);
     }
 
     var setupSimilarList = document.querySelector('.setup-similar-list');
     setupSimilarList.appendChild(fragment);
+  };
+
+  var updateWizards = function () {
+    renderWizards(wizards);
+  };
+
+  var onSuccessWizardsLoad = function (data) {
+    wizards = data;
+    updateWizards();
   };
 
   window.backend.load('get', window.backend.GET_DATA_URL, onSuccessWizardsLoad, window.backend.onErrorLoad);
