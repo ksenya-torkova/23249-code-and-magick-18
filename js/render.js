@@ -26,7 +26,13 @@
   };
 
   var updateWizards = function () {
-    renderWizards(wizards);
+    var sameCoatWizards = wizards.filter(function (it) {
+      return it.colorCoat === window.colorize.coatColor;
+    });
+
+    console.log(sameCoatWizards);
+
+    renderWizards(sameCoatWizards);
   };
 
   var onSuccessWizardsLoad = function (data) {
