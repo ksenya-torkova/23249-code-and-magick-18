@@ -27,6 +27,8 @@
     '#e6e848'
   ];
 
+  var setup = document.querySelector('.setup');
+
   var setInputValue = function (input, value) {
     input.value = value;
   };
@@ -46,33 +48,42 @@
     return '#' + r + g + b;
   };
 
-  var setupWizardCoat = window.setup.querySelector('.wizard-coat');
-  var setupWizardEyes = window.setup.querySelector('.wizard-eyes');
-  var setupFireball = window.setup.querySelector('.setup-fireball-wrap');
-  var setupWizardCoatInput = window.setup.querySelector('input[name="coat-color"]');
-  var setupWizardEyesInput = window.setup.querySelector('input[name="eyes-color"]');
-  var setupFireballInput = window.setup.querySelector('input[name="fireball-color"]');
+  var setupWizardCoat = setup.querySelector('.wizard-coat');
+  var setupWizardEyes = setup.querySelector('.wizard-eyes');
+  var setupFireball = setup.querySelector('.setup-fireball-wrap');
+  var setupWizardCoatInput = setup.querySelector('input[name="coat-color"]');
+  var setupWizardEyesInput = setup.querySelector('input[name="eyes-color"]');
+  var setupFireballInput = setup.querySelector('input[name="fireball-color"]');
 
-  var coatColor;
+  var coatColor = setupWizardCoat.style.fill;
 
   setupWizardCoat.addEventListener('click', function () {
     var newCoatColor = COAT_COLORS[window.util.getRandomInteger(0, COAT_COLORS.length - 1)];
     setupWizardCoat.style.fill = newCoatColor;
     coatColor = newCoatColor;
     setInputValue(setupWizardCoatInput, setupWizardCoat.style.fill);
+    window.ranking.onCoatChange(newCoatColor);
   });
 
-  var eyesColor;
+  var eyesColor = setupWizardEyes.style.fill;
+
 
   setupWizardEyes.addEventListener('click', function () {
     var newEyesColor = EYES_COLORS[window.util.getRandomInteger(0, EYES_COLORS.length - 1)];
     setupWizardEyes.style.fill = newEyesColor;
     eyesColor = newEyesColor;
     setInputValue(setupWizardEyesInput, setupWizardEyes.style.fill);
+    window.ranking.onEyesChange(newEyesColor);
   });
 
   setupFireball.addEventListener('click', function () {
     setupFireball.style.backgroundColor = FIREBALL_COLORS[window.util.getRandomInteger(0, FIREBALL_COLORS.length - 1)];
     setInputValue(setupFireballInput, rgbToHex(setupFireball.style.backgroundColor));
   });
+
+  window.colorize = {
+    setup: setup,
+    coatColor: coatColor,
+    eyesColor: eyesColor
+  };
 })();
