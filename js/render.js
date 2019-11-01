@@ -15,14 +15,22 @@
     fragment.appendChild(heroTemplate);
   };
 
-  var onSuccessWizardsLoad = function (data) {
+  var appendWizards = function (wizardsData) {
     for (var i = 0; i < HEROES_AMOUNT; i++) {
-      getTemplateOfHero(data[i]);
+      getTemplateOfHero(wizardsData[i]);
     }
 
     var setupSimilarList = document.querySelector('.setup-similar-list');
+    var setupSimilarItem = setupSimilarList.querySelector('.setup-similar-item');
+
+    if (setupSimilarItem) {
+      setupSimilarList.innerHTML = '';
+    }
+
     setupSimilarList.appendChild(fragment);
   };
 
-  window.backend.load('get', window.backend.GET_DATA_URL, onSuccessWizardsLoad, window.backend.onErrorLoad);
+  window.render = {
+    appendWizards: appendWizards
+  };
 })();
