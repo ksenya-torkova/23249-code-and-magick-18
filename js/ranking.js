@@ -44,15 +44,15 @@
     updateWizards();
   };
 
-  var onCoatChange = function (color) {
+  var onCoatChange = window.util.debounce(function (color) {
     window.colorize.coatColor = color;
-    window.util.debounce(updateWizards);
-  };
+    updateWizards();
+  });
 
-  var onEyesChange = function (color) {
+  var onEyesChange = window.util.debounce(function (color) {
     window.colorize.eyesColor = color;
-    window.util.debounce(updateWizards);
-  };
+    updateWizards();
+  });
 
   window.backend.load('get', window.backend.GET_DATA_URL, onSuccessWizardsLoad, window.backend.onErrorLoad);
 

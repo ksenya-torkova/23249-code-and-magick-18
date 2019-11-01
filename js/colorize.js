@@ -67,7 +67,6 @@
 
   var eyesColor = setupWizardEyes.style.fill;
 
-
   setupWizardEyes.addEventListener('click', function () {
     var newEyesColor = EYES_COLORS[window.util.getRandomInteger(0, EYES_COLORS.length - 1)];
     setupWizardEyes.style.fill = newEyesColor;
