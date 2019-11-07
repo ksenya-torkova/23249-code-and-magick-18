@@ -51,4 +51,8 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
+
+  window.dragAndDrop = {
+    setupHandler: setupHandler
+  };
 })();
